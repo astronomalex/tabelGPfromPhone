@@ -1,0 +1,17 @@
+
+<div class="backdrop" (click)="onClose()"></div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="dialog-box">
+      <div class="row" *ngFor="let wrkr of workers; let i = index">
+        <a
+          class="list-group-item"
+          (click)="onSelect(i)"
+          style="cursor: pointer"
+        >
+          {{wrkr.surname}} {{wrkr.tabelNum}}
+        </a>
+      </div>
+    </div>
+  </div>
+</div>

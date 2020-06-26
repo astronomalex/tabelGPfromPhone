@@ -1,0 +1,100 @@
+<div class="row">
+  <div class="col-xs-12">
+    <form [formGroup]="workerForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="tabelNum">Табельный номер</label>
+            <input
+              type="text"
+              id="tabelNum"
+              formControlName="tabelNum"
+              class="form-control"
+              >
+            <span *ngIf="!workerForm.get('tabelNum').valid && workerForm.get('tabelNum').touched"
+            class="help-block">
+              <span *ngIf="workerForm.get('tabelNum').errors['tabelNumExist']">Работник с таким табельным номером уже есть в списке!</span>
+              <span *ngIf="workerForm.get('tabelNum').errors['required']">Это поле обязательно к заполнению!</span>
+              <span *ngIf="workerForm.get('tabelNum').errors['pattern']">Табельный номер состоит из четырех цифр</span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="grade">Разряд</label>
+            <input
+              type="number"
+              pattern="^[1-6]+$"
+              id="grade"
+              formControlName="grade"
+              class="form-control">
+            <span *ngIf="!workerForm.get('grade').valid && workerForm.get('grade').touched"
+                  class="help-block">
+              <span>Разряд от 1 до 6.</span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="surname">Фамилия</label>
+            <input
+              type="text"
+              id="surname"
+              formControlName="surname"
+              class="form-control">
+            <span *ngIf="!workerForm.get('surname').valid && workerForm.get('surname').touched"
+                  class="help-block">
+              <span *ngIf="workerForm.get('surname').errors['required']">Это поле обязательно к заполнению!</span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="name">Имя</label>
+            <input
+              type="text"
+              id="name"
+              formControlName="name"
+              class="form-control">
+            <span *ngIf="!workerForm.get('name').valid && workerForm.get('name').touched"
+                  class="help-block">
+              <span *ngIf="workerForm.get('name').errors['required']">Это поле обязательно к заполнению!</span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="patronymic">Отчество</label>
+            <input
+              type="text"
+              id="patronymic"
+              formControlName="patronymic"
+              class="form-control">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <button
+            [disabled]="!workerForm.valid"
+            type="submit"
+            class="btn btn-success">
+            Сохранить
+          </button>
+          <button
+            (click)="onCancel()"
+            class="btn btn-danger"
+            type="button">Отмена</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

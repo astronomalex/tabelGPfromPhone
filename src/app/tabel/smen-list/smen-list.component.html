@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-success" (click)="onNewSmena()">Добавить Смену</button>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <app-smena-item
+    *ngFor="let smenaEl of (smens | async).smens; let i = index"
+    [smena]="smenaEl"
+    [index]="i"></app-smena-item>
+  </div>
+</div>
